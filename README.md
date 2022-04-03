@@ -1,6 +1,8 @@
-# ld50
-ludumdare 50th edition compo game
+# chaos vault
 
+itch: https://zjikra.itch.io/chaos-vault
+
+ludumdare 50th edition compo game
 turn based bullet hell: survive
 
 tools used:  
