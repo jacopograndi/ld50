@@ -46,6 +46,17 @@ func _process(delta):
 			player_move(selectedplayer, mouse_cent)
 			dump_hover()
 			selectedplayer = ""
+		
+	var hotkey = -1
+	if Input.is_action_just_pressed("1"): hotkey = 0
+	if Input.is_action_just_pressed("2"): hotkey = 1
+	if Input.is_action_just_pressed("3"): hotkey = 2
+	if Input.is_action_just_pressed("4"): hotkey = 3
+	if Input.is_action_just_pressed("5"): hotkey = 4
+	if hotkey != -1:
+		var name = "player" + str(hotkey)
+		load_hover(name)
+		selectedplayer = name
 	
 func validate_move(playername : String, dest : Vector2):
 	var mindist = 10000
@@ -71,16 +82,19 @@ func validate_move(playername : String, dest : Vector2):
 func player_move(playername : String, dest : Vector2):
 	if !validate_move(playername, dest): return
 	
+	dialog.moved()
+	
 	var indx = playertiles.tile_set.find_tile_by_name(playername)
 	var hovercells = get_hover_cells(playername)
 	var cells = playertiles.get_used_cells_by_id(indx)
 	for cell in cells: playertiles.set_cellv(cell, -1)
-	for cell in hovercells: playertiles.set_cellv(cell, indx)
+	for cell in hovercells: 
+		playertiles.set_cellv(cell, indx)
+		if cell.y < -156: dialog.ending()
 	
 	check_friend()
 	
 	stepper.step(delay)
-	dialog.moved()
 	
 	cooldown = delay
 	
@@ -102,6 +116,7 @@ func check_friend():
 						dist = min(dist, f.distance_to(p))
 			if dist < 2:
 				players.append(playernum)
+				dialog.friend(tilename)
 				break
 		
 	
