@@ -53,7 +53,7 @@ func _process(delta):
 	if Input.is_action_just_pressed("3"): hotkey = 2
 	if Input.is_action_just_pressed("4"): hotkey = 3
 	if Input.is_action_just_pressed("5"): hotkey = 4
-	if hotkey != -1:
+	if hotkey != -1 and hotkey in players:
 		var name = "player" + str(hotkey)
 		load_hover(name)
 		selectedplayer = name

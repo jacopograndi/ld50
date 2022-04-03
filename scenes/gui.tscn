@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=9 format=2]
 
 [ext_resource path="res://theme.tres" type="Theme" id=1]
 [ext_resource path="res://source/help.gd" type="Script" id=2]
@@ -7,6 +7,7 @@
 [ext_resource path="res://assets/trap.png" type="Texture" id=5]
 [ext_resource path="res://scenes/bullet.tscn" type="PackedScene" id=6]
 [ext_resource path="res://scenes/fx_trap.tscn" type="PackedScene" id=7]
+[ext_resource path="res://scenes/audio.tscn" type="PackedScene" id=8]
 
 [node name="gui" type="CanvasLayer"]
 
@@ -33,15 +34,6 @@ rect_min_size = Vector2( 70, 50 )
 focus_mode = 1
 theme = ExtResource( 1 )
 text = " ? "
-script = ExtResource( 2 )
-
-[node name="button2" type="Button" parent="."]
-margin_right = 132.0
-margin_bottom = 50.0
-grow_horizontal = 0
-rect_min_size = Vector2( 70, 50 )
-theme = ExtResource( 1 )
-text = "settings"
 script = ExtResource( 2 )
 
 [node name="popup" type="Popup" parent="."]
@@ -162,6 +154,7 @@ grow_horizontal = 2
 rect_min_size = Vector2( 100, 0 )
 text = "Ok"
 
+[node name="audio" parent="." instance=ExtResource( 8 )]
+
 [connection signal="button_down" from="button" to="button" method="help"]
-[connection signal="button_down" from="button2" to="button2" method="help"]
 [connection signal="button_down" from="popup/panel/Button" to="button" method="ok"]
