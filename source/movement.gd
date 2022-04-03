@@ -12,6 +12,9 @@ var stepper : Node
 
 var players : Array
 
+var cooldown = 0
+var delay = 0.2
+
 func _ready():
 	playertiles = get_tree().root.get_child(0).get_node("playertiles")
 	enemytiles = get_tree().root.get_child(0).get_node("enemytiles")
@@ -26,6 +29,7 @@ func get_world_mouse_pos():
 	return cam.get_global_mouse_position()
 	
 func _process(delta):
+	cooldown -= delta
 	process_hover(delta)
 	if Input.is_action_just_pressed("sel"):
 		if selectedplayer == "":
@@ -75,8 +79,10 @@ func player_move(playername : String, dest : Vector2):
 	
 	check_friend()
 	
-	stepper.step()
+	stepper.step(delay)
 	dialog.moved()
+	
+	cooldown = delay
 	
 func check_friend():
 	var ids = playertiles.tile_set.get_tiles_ids()

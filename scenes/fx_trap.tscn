@@ -1,0 +1,49 @@
+[gd_scene load_steps=7 format=2]
+
+[ext_resource path="res://assets/bullet.png" type="Texture" id=1]
+
+[sub_resource type="Gradient" id=6]
+offsets = PoolRealArray( 0, 0.989305, 1 )
+colors = PoolColorArray( 1, 1, 1, 1, 1, 1, 1, 0.0855615, 1, 1, 1, 0 )
+
+[sub_resource type="GradientTexture" id=7]
+gradient = SubResource( 6 )
+
+[sub_resource type="Curve" id=4]
+_data = [ Vector2( 0, 1 ), 0.0, 0.0, 0, 0, Vector2( 1, 0 ), -1.63794, 0.0, 0, 0 ]
+
+[sub_resource type="CurveTexture" id=5]
+curve = SubResource( 4 )
+
+[sub_resource type="ParticlesMaterial" id=1]
+lifetime_randomness = 0.13
+trail_size_modifier = SubResource( 5 )
+emission_shape = 5
+emission_ring_radius = 20.0
+emission_ring_inner_radius = 10.0
+emission_ring_height = 1.0
+emission_ring_axis = Vector3( 0, 0, 1 )
+flag_disable_z = true
+direction = Vector3( 0, 0, 0 )
+spread = 180.0
+gravity = Vector3( 0, 0, 0 )
+initial_velocity_random = 1.0
+orbit_velocity = 0.0
+orbit_velocity_random = 0.0
+linear_accel = 77.31
+radial_accel = -63.88
+damping = 58.82
+angle = 720.0
+angle_random = 0.64
+scale_random = 1.0
+color = Color( 1, 1, 0, 1 )
+color_ramp = SubResource( 7 )
+
+[node name="fx" type="Node2D"]
+
+[node name="Particles2D" type="Particles2D" parent="."]
+amount = 4
+lifetime = 0.4
+randomness = 0.58
+process_material = SubResource( 1 )
+texture = ExtResource( 1 )

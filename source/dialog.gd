@@ -6,22 +6,18 @@ var label : Label
 var current = "init"
 var text = {
 	"init": {
-		"text": "Noooo! Navigation anomaly! Help!",
+		"text": "Navigation anomaly! The ship fractured!",
 		"next": "init2"
 	},
 	"init2": {
-		"text": "The ship fractured!",
+		"text": "This is the main vault chamber! We should be in the atrium!",
 		"next": "init3"
 	},
 	"init3": {
-		"text": "This is the main vault chamber! We should be in the atrium!",
+		"text": "INTRUDER ALERT! ALL DEFENSIVE SYSTEM ACTIVATED! DIE THIEF!",
 		"next": "init4"
 	},
 	"init4": {
-		"text": "INTRUDER ALERT! ALL DEFENSIVE SYSTEM ACTIVATED! DIE THIEF!",
-		"next": "init5"
-	},
-	"init5": {
 		"text": "We are doomed.",
 		"next": "close"
 	}
